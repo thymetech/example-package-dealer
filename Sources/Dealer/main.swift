@@ -15,16 +15,25 @@ srandom(UInt32(clock()))
 
 import DeckOfPlayingCards
 
-let numberOfCards = 10
+let numberOfCards = 80
 
 var deck = Deck.standard52CardDeck()
 deck.shuffle()
 
-for _ in 0..<numberOfCards {
+var term = " "
+
+for i in 0..<numberOfCards {
     guard let card = deck.deal() else {
+        print("")
         print("No More Cards!")
         break
     }
 
-    print(card)
+    if (i % 10) == 9 {
+      term = "\n"
+    } else {
+      term = "\t"
+    }
+
+    print("[\(card)]", terminator: term)
 }
